@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@primer/octicons-react": "^19.12.0",
+    "framer-motion": "^11.11.11",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
