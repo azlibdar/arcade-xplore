@@ -34,7 +34,7 @@ const Sidebar = ({ onSidebarToggle, isMobile }: Props) => {
           damping: 30,
         }}
       >
-        <div className={`${isMobile ? "fixed inset-0 w-full" : "min-w-72 max-w-72"} h-full shrink-0 grow-0 bg-zinc-950`}>
+        <div className={`${isMobile ? "fixed inset-0 w-full" : "min-w-72 max-w-72"} z-50 h-full shrink-0 grow-0 bg-zinc-950`}>
           <div className="w-full px-4 py-2 flex justify-between items-center border-b border-zinc-800/60">
             <img src={logo} alt="ArcadeX Logo" className="min-w-6 w-6 aspect-square rounded-full" />
             <IconButton title="Close sidebar" onClick={onSidebarToggle}>

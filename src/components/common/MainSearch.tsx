@@ -8,6 +8,7 @@ const MainSearch = () => {
       </label>
       <input
         type="text"
+        id="search"
         placeholder="Search games.."
         className="w-full py-3 px-3 pl-10 rounded-full text-base transition bg-zinc-800 text-zinc-200 placeholder:text-zinc-400 border-0 outline-none"
       />
