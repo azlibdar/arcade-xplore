@@ -1,4 +1,4 @@
-import MainSearch from "../common/MainSearch";
+import MainSearch from "../ui/MainSearch";
 import GameGrid from "./GameGrid";
 import NavBar from "./Navbar";
 
