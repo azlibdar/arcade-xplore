@@ -9,7 +9,12 @@ interface GameCardProps {
 const GameCard = ({ game }: GameCardProps) => {
   return (
     <div className="bg-zinc-800 rounded-xl p-4 cursor-pointer">
-      <img src={game.background_image} alt={game.name} className="w-full h-48 transition object-cover rounded-lg" />
+      <img
+        src={game.background_image}
+        loading="lazy"
+        alt={game.name}
+        className="w-full aspect-video transition object-cover rounded-lg bg-zinc-900"
+      />
       <div className="py-4 flex flex-col">
         <div className="flex justify-between gap-4">
           <PlatformIcons platforms={game.parent_platforms.map((p) => p.platform)} />
