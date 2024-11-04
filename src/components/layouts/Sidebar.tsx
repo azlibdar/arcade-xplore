@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SidebarExpandIcon } from "@primer/octicons-react";
 import IconButton from "../common/IconButton";
 import logo from "../../assets/logo/arcade-x.png";
+import GenreList from "./GenreList";
 
 interface Props {
   onSidebarToggle: () => void;
@@ -41,6 +42,7 @@ const Sidebar = ({ onSidebarToggle, isMobile }: Props) => {
               <SidebarExpandIcon size={24} className="text-zinc-400" />
             </IconButton>
           </div>
+          <GenreList />
         </div>
       </motion.aside>
     </AnimatePresence>
