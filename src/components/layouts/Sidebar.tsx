@@ -3,13 +3,16 @@ import { SidebarExpandIcon } from "@primer/octicons-react";
 import IconButton from "../common/IconButton";
 import logo from "../../assets/logo/arcade-x.png";
 import GenreList from "./GenreList";
+import { Genre } from "../../hooks/useGenres";
 
 interface Props {
   onSidebarToggle: () => void;
   isMobile: boolean;
+  onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const Sidebar = ({ onSidebarToggle, isMobile }: Props) => {
+const Sidebar = ({ onSidebarToggle, isMobile, onSelectGenre, selectedGenre }: Props) => {
   const desktopVariants = {
     initial: { x: "-288px" },
     animate: { x: 0 },
@@ -46,7 +49,7 @@ const Sidebar = ({ onSidebarToggle, isMobile }: Props) => {
               <SidebarExpandIcon size={24} className="text-zinc-400" />
             </IconButton>
           </div>
-          <GenreList />
+          <GenreList selectedGenre={selectedGenre} onSelectGenre={onSelectGenre} />
         </div>
       </motion.aside>
     </AnimatePresence>
