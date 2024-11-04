@@ -2,6 +2,7 @@ import { Genre } from "../../hooks/useGenres";
 import MainSearch from "../ui/MainSearch";
 import GameGrid from "./GameGrid";
 import NavBar from "./Navbar";
+import SortControls from "./SortControls";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -18,6 +19,7 @@ const Main = ({ isSidebarOpen, onSidebarToggle, selectedGenre }: Props) => {
           Arcade<span className="text-rose-400">Xplore</span>
         </h1>
         <MainSearch />
+        <SortControls />
         <GameGrid selectedGenre={selectedGenre} />
       </div>
     </main>
