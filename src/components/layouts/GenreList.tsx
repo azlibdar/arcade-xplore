@@ -1,13 +1,14 @@
 import useGenres from "../../hooks/useGenres";
+import GenreCard from "../ui/GenreCard";
 
 const GenreList = () => {
   const { data } = useGenres();
   return (
-    <div className="p-4 flex flex-col gap-4">
+    <div className="p-4 flex flex-col gap-4 overflow-y-auto scrollbar-thin">
       <h3 className="text-sm uppercase tracking-wide text-zinc-400">Genres</h3>
-      <div className="w-full flex flex-col gap-2">
+      <div className="w-full grid grid-cols-1">
         {data.map((genre) => (
-          <div key={genre.id}>{genre.name}</div>
+          <GenreCard key={genre.id} genre={genre} />
         ))}
       </div>
     </div>
