@@ -9,7 +9,7 @@ function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   const { isMobile } = useOnMobile();
 
-  const handleSelectGenre = (genre: Genre) => {
+  const handleSelectGenre = (genre: Genre | null) => {
     setSelectedGenre(genre);
 
     if (isMobile) {

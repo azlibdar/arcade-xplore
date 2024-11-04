@@ -4,7 +4,7 @@ import GenreCard from "../ui/GenreCard";
 import GenreCardSkeleton from "../ui/GenreCardSkeleton";
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void;
+  onSelectGenre: (genre: Genre | null) => void;
   selectedGenre: Genre | null;
 }
 

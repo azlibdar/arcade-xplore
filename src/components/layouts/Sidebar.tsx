@@ -8,7 +8,7 @@ import { Genre } from "../../hooks/useGenres";
 interface Props {
   onSidebarToggle: () => void;
   isMobile: boolean;
-  onSelectGenre: (genre: Genre) => void;
+  onSelectGenre: (genre: Genre | null) => void;
   selectedGenre: Genre | null;
 }
 
