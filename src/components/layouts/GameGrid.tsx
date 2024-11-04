@@ -1,15 +1,17 @@
 import useGame from "../../hooks/useGame";
 import { Genre } from "../../hooks/useGenres";
+import { PlatformList } from "../../hooks/usePlatforms";
 import ErrorMsg from "../common/ErrorMsg";
 import GameCard from "../ui/GameCard";
 import GameCardSkeleton from "../ui/GameCardSkeleton";
 
 interface Props {
   selectedGenre: Genre | null;
+  selectedPlatform: PlatformList | null;
 }
 
-const GameGrid = ({ selectedGenre }: Props) => {
-  const { data, error, loading } = useGame(selectedGenre);
+const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
+  const { data, error, loading } = useGame(selectedGenre, selectedPlatform);
 
   console.log(loading);
 

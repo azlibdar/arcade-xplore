@@ -1,4 +1,5 @@
 import { Genre } from "../../hooks/useGenres";
+import { PlatformList } from "../../hooks/usePlatforms";
 import MainSearch from "../ui/MainSearch";
 import GameGrid from "./GameGrid";
 import NavBar from "./Navbar";
@@ -8,9 +9,11 @@ interface Props {
   isSidebarOpen: boolean;
   onSidebarToggle: () => void;
   selectedGenre: Genre | null;
+  onSelectPlatform: (platform: PlatformList | "") => void;
+  selectedPlatform: PlatformList | null;
 }
 
-const Main = ({ isSidebarOpen, onSidebarToggle, selectedGenre }: Props) => {
+const Main = ({ isSidebarOpen, onSidebarToggle, selectedGenre, onSelectPlatform, selectedPlatform }: Props) => {
   return (
     <main className="flex-1 bg-zinc-900 flex flex-col overflow-y-auto">
       <NavBar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} />
@@ -19,8 +22,8 @@ const Main = ({ isSidebarOpen, onSidebarToggle, selectedGenre }: Props) => {
           Arcade<span className="text-rose-400">Xplore</span>
         </h1>
         <MainSearch />
-        <SortControls />
-        <GameGrid selectedGenre={selectedGenre} />
+        <SortControls onSelectPlatform={onSelectPlatform} />
+        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
       </div>
     </main>
   );

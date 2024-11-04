@@ -5,18 +5,27 @@ interface SelectInputProps {
   loading: boolean;
   error: string | null;
   defaultValue?: string;
+  onChange: (platform: PlatformList | "") => void;
 }
 
-const SelectInput = ({ data, loading, error, defaultValue = "Select" }: SelectInputProps) => {
+const SelectInput = ({ data, loading, error, onChange, defaultValue = "Select" }: SelectInputProps) => {
   return (
     <div className="relative select-none" title={error ? "Something went wrong" : loading ? "Loading" : "Sort by platforms"}>
       <select
+        onChange={(e) => {
+          const platform = data?.find((option) => option.slug === e.target.value);
+          if (platform) {
+            onChange(platform);
+          } else {
+            onChange("");
+          }
+        }}
         disabled={loading || error !== null}
         className="block px-4 cursor-pointer disabled:pointer-events-none disabled:opacity-50 text-sm py-2.5 pr-9 transition outline-none focus:ring-2 focus:ring-inset focus:ring-rose-400 rounded-lg text-zinc-200 bg-zinc-800 appearance-none"
         name="genre"
         id="genre"
       >
-        <option value={""}>{defaultValue}</option>
+        <option value="">{defaultValue}</option>
         {data?.map((option) => (
           <option key={option.id} value={option.slug}>
             {option.name}
