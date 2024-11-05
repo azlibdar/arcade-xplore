@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Main from "./components/layouts/Main";
 import Sidebar from "./components/layouts/Sidebar";
 import useOnMobile from "./hooks/useOnMobile";
-import { Genre } from "./hooks/useGenres";
+import { Genre } from "./constants";
 import { PlatformList } from "./hooks/usePlatforms";
 import { Publisher } from "./hooks/usePublishers";
 

@@ -2,7 +2,7 @@ import { SidebarExpandIcon } from "@primer/octicons-react";
 import IconButton from "../common/IconButton";
 import logo from "../../assets/logo/arcade-x.png";
 import GenreList from "./GenreList";
-import { Genre } from "../../hooks/useGenres";
+import { Genre } from "../../constants";
 
 interface Props {
   onSidebarToggle: () => void;
