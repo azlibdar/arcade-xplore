@@ -36,9 +36,16 @@ const PlatformIcons = ({ platforms }: Props) => {
     "neo-geo": neogeo,
   };
 
+  if (!platforms)
+    return (
+      <div>
+        <p className="text-sm text-zinc-400">No platforms found!</p>
+      </div>
+    );
+
   return (
     <div className="flex items-baseline gap-2 flex-wrap">
-      {platforms?.map((platform) => (
+      {platforms.map((platform) => (
         <span key={platform.id} title={platform.name} className="p-1 bg-zinc-700 rounded-lg flex justify-center items-center">
           <img src={iconMap[platform.slug]} alt={platform.name} className="min-w-6 opacity-50" />
         </span>

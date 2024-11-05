@@ -11,8 +11,6 @@ interface Props {
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, loading } = useGame(gameQuery);
 
-  console.log(loading);
-
   if (error) return <ErrorMsg errorMsg={error} className="bg-zinc-800 py-6 gap-2 text-zinc-200 text-sm" />;
 
   return (
