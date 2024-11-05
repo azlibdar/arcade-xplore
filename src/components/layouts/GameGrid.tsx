@@ -20,7 +20,7 @@ const GameGrid = ({ gameQuery }: Props) => {
       ) : data && data.length > 0 ? (
         data.map((game) => <GameCard key={game.id} game={game} />)
       ) : (
-        <p className="col-span-full text-center text-gray-500">No games found</p>
+        <ErrorMsg errorMsg="No games found!" className="col-span-3 bg-zinc-800 py-6 gap-2 text-zinc-200 text-sm" />
       )}
     </div>
   );
