@@ -1,20 +1,15 @@
+import { GameQuery } from "../../App";
 import useGame from "../../hooks/useGame";
-import { Genre } from "../../hooks/useGenres";
-import { PlatformList } from "../../hooks/usePlatforms";
-import { Publisher } from "../../hooks/usePublishers";
 import ErrorMsg from "../common/ErrorMsg";
 import GameCard from "../ui/GameCard";
 import GameCardSkeleton from "../ui/GameCardSkeleton";
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: PlatformList | null;
-  selectedPublisher: Publisher | null;
-  searchQuery: string | null;
+  gameQuery: GameQuery;
 }
 
-const GameGrid = ({ selectedGenre, selectedPlatform, selectedPublisher, searchQuery }: Props) => {
-  const { data, error, loading } = useGame(selectedGenre, selectedPlatform, selectedPublisher, searchQuery);
+const GameGrid = ({ gameQuery }: Props) => {
+  const { data, error, loading } = useGame(gameQuery);
 
   console.log(loading);
 

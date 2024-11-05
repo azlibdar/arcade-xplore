@@ -1,4 +1,4 @@
-import { Genre } from "../../hooks/useGenres";
+import { GameQuery } from "../../App";
 import { PlatformList } from "../../hooks/usePlatforms";
 import { Publisher } from "../../hooks/usePublishers";
 import MainSearch from "../ui/MainSearch";
@@ -8,27 +8,14 @@ import SortControls from "./SortControls";
 
 interface Props {
   isSidebarOpen: boolean;
+  gameQuery: GameQuery;
   onSidebarToggle: () => void;
-  selectedGenre: Genre | null;
   onSelectPlatform: (platform: PlatformList | "") => void;
   onSelectPublisher: (publisher: Publisher | "") => void;
-  selectedPlatform: PlatformList | null;
-  selectedPublisher: Publisher | null;
   onSearchQuery: (query: string | null) => void;
-  searchQuery: string | null;
 }
 
-const Main = ({
-  isSidebarOpen,
-  onSidebarToggle,
-  selectedGenre,
-  onSelectPlatform,
-  onSelectPublisher,
-  selectedPublisher,
-  selectedPlatform,
-  onSearchQuery,
-  searchQuery,
-}: Props) => {
+const Main = ({ isSidebarOpen, onSidebarToggle, onSelectPlatform, onSelectPublisher, onSearchQuery, gameQuery }: Props) => {
   return (
     <main className="flex-1 bg-zinc-900 flex flex-col overflow-y-auto">
       <NavBar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} />
@@ -43,12 +30,7 @@ const Main = ({
           <MainSearch onSearchQuery={onSearchQuery} />
           <SortControls onSelectPlatform={onSelectPlatform} onSelectPublisher={onSelectPublisher} />
         </div>
-        <GameGrid
-          selectedGenre={selectedGenre}
-          searchQuery={searchQuery}
-          selectedPlatform={selectedPlatform}
-          selectedPublisher={selectedPublisher}
-        />
+        <GameGrid gameQuery={gameQuery} />
       </div>
     </main>
   );

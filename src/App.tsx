@@ -6,37 +6,40 @@ import { Genre } from "./hooks/useGenres";
 import { PlatformList } from "./hooks/usePlatforms";
 import { Publisher } from "./hooks/usePublishers";
 
+export interface GameQuery {
+  genre: Genre | null;
+  platform: PlatformList | null;
+  publisher: Publisher | null;
+  searchQuery: string | null;
+}
+
 function App() {
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   const [isSidebarOpen, setSidebarOpen] = useState(true);
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<PlatformList | null>(null);
-  const [selectedPublisher, setSelectedPublisher] = useState<Publisher | null>(null);
-  const [searchQuery, setSearchQuery] = useState<string | null>(null);
   const { isMobile } = useOnMobile();
 
   const handleSearchQuery = (query: string | null) => {
-    setSearchQuery(query);
+    setGameQuery({ ...gameQuery, searchQuery: query });
   };
 
   const handleSelectPublisher = (publisher: Publisher | "") => {
     if (publisher === "") {
-      setSelectedPublisher(null);
+      setGameQuery({ ...gameQuery, publisher: null });
       return;
     }
-
-    setSelectedPublisher(publisher);
+    setGameQuery({ ...gameQuery, publisher });
   };
 
   const handleSelectPlatform = (platform: PlatformList | "") => {
     if (platform === "") {
-      setSelectedPlatform(null);
+      setGameQuery({ ...gameQuery, platform: null });
       return;
     }
-    setSelectedPlatform(platform);
+    setGameQuery({ ...gameQuery, platform });
   };
 
   const handleSelectGenre = (genre: Genre | null) => {
-    setSelectedGenre(genre);
+    setGameQuery({ ...gameQuery, genre });
 
     if (isMobile) {
       setSidebarOpen(false);
@@ -54,18 +57,15 @@ function App() {
   return (
     <div className="w-full h-dvh flex overflow-hidden bg-zinc-900">
       {isSidebarOpen && (
-        <Sidebar onSelectGenre={handleSelectGenre} selectedGenre={selectedGenre} onSidebarToggle={handleSidebar} isMobile={isMobile} />
+        <Sidebar onSelectGenre={handleSelectGenre} selectedGenre={gameQuery.genre} onSidebarToggle={handleSidebar} isMobile={isMobile} />
       )}
       <Main
-        selectedPlatform={selectedPlatform}
-        selectedPublisher={selectedPublisher}
         onSelectPlatform={handleSelectPlatform}
         onSelectPublisher={handleSelectPublisher}
-        selectedGenre={selectedGenre}
         isSidebarOpen={isSidebarOpen}
         onSidebarToggle={handleSidebar}
         onSearchQuery={handleSearchQuery}
-        searchQuery={searchQuery}
+        gameQuery={gameQuery}
       />
     </div>
   );
