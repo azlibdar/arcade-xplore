@@ -1,4 +1,4 @@
-import { Genre } from "../../hooks/useGenres";
+import { Genre } from "../../constants";
 
 interface GenreCardProps {
   genre: Genre;
