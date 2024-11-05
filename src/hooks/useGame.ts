@@ -1,11 +1,6 @@
 import { GameQuery } from "../App";
+import { Platform } from "../constants";
 import useData from "./useData";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
 
 export interface Game {
   id: number;

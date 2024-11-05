@@ -1,18 +1,15 @@
-import { PlatformList } from "../../hooks/usePlatforms";
-import { Publisher } from "../../hooks/usePublishers";
+import { Platform, Publisher } from "../../constants";
 
 interface SelectInputProps {
-  data: PlatformList[] | Publisher[] | undefined;
-  loading: boolean;
-  error: string | null;
+  data: Platform[] | Publisher[] | undefined;
   defaultValue?: string;
   id: string;
-  onChange: (platform: PlatformList | "") => void;
+  onChange: (platform: Platform | "") => void;
 }
 
-const SelectInput = ({ data, loading, error, onChange, defaultValue = "Select", id }: SelectInputProps) => {
+const SelectInput = ({ data, onChange, defaultValue = "Select", id }: SelectInputProps) => {
   return (
-    <div className="relative select-none" title={error ? "Something went wrong" : loading ? "Loading" : `Sort by ${id}`}>
+    <div className="relative select-none" title={`Sort by ${id}`}>
       <label htmlFor={id} className="sr-only">
         Sort by ${id}
       </label>
@@ -26,7 +23,6 @@ const SelectInput = ({ data, loading, error, onChange, defaultValue = "Select", 
           }
         }}
         id={id}
-        disabled={loading || error !== null}
         className="block px-4 cursor-pointer disabled:pointer-events-none disabled:opacity-50 text-sm py-3 pr-9 transition outline-none focus:ring-2 focus:ring-inset focus:ring-rose-400 rounded-lg text-zinc-200 bg-zinc-800 appearance-none"
       >
         <option value="">{defaultValue}</option>

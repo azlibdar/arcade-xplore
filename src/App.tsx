@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import Main from "./components/layouts/Main";
 import Sidebar from "./components/layouts/Sidebar";
 import useOnMobile from "./hooks/useOnMobile";
-import { Genre } from "./constants";
-import { PlatformList } from "./hooks/usePlatforms";
-import { Publisher } from "./hooks/usePublishers";
+import { Genre, Platform, Publisher } from "./constants";
 
 export interface GameQuery {
   genre: Genre | null;
-  platform: PlatformList | null;
+  platform: Platform | null;
   publisher: Publisher | null;
   searchQuery: string | null;
 }
@@ -30,7 +28,7 @@ function App() {
     setGameQuery({ ...gameQuery, publisher });
   };
 
-  const handleSelectPlatform = (platform: PlatformList | "") => {
+  const handleSelectPlatform = (platform: Platform | "") => {
     if (platform === "") {
       setGameQuery({ ...gameQuery, platform: null });
       return;

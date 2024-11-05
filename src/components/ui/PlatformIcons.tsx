@@ -1,4 +1,3 @@
-import { Platform } from "../../hooks/useGame";
 import logoMac from "../../assets/logo/logo-mac.svg";
 import logoLinux from "../../assets/logo/logo-linux.svg";
 import logoWindows from "../../assets/logo/logo-windows.svg";
@@ -13,6 +12,7 @@ import logoSega from "../../assets/logo/logo-sega.svg";
 import logoCommodore from "../../assets/logo/logo-commodore.svg";
 import threedo from "../../assets/logo/logo-3do.svg";
 import neogeo from "../../assets/logo/logo-neo-geo.svg";
+import { Platform } from "../../constants";
 
 interface Props {
   platforms: Platform[];

@@ -1,6 +1,5 @@
 import { GameQuery } from "../../App";
-import { PlatformList } from "../../hooks/usePlatforms";
-import { Publisher } from "../../hooks/usePublishers";
+import { Platform, Publisher } from "../../constants";
 import MainSearch from "../ui/MainSearch";
 import GameGrid from "./GameGrid";
 import NavBar from "./Navbar";
@@ -10,7 +9,7 @@ interface Props {
   isSidebarOpen: boolean;
   gameQuery: GameQuery;
   onSidebarToggle: () => void;
-  onSelectPlatform: (platform: PlatformList | "") => void;
+  onSelectPlatform: (platform: Platform | "") => void;
   onSelectPublisher: (publisher: Publisher | "") => void;
   onSearchQuery: (query: string | null) => void;
 }
