@@ -1,5 +1,6 @@
 import { Genre } from "../../hooks/useGenres";
 import { PlatformList } from "../../hooks/usePlatforms";
+import { Publisher } from "../../hooks/usePublishers";
 import MainSearch from "../ui/MainSearch";
 import GameGrid from "./GameGrid";
 import NavBar from "./Navbar";
@@ -10,10 +11,20 @@ interface Props {
   onSidebarToggle: () => void;
   selectedGenre: Genre | null;
   onSelectPlatform: (platform: PlatformList | "") => void;
+  onSelectPublisher: (publisher: Publisher | "") => void;
   selectedPlatform: PlatformList | null;
+  selectedPublisher: Publisher | null;
 }
 
-const Main = ({ isSidebarOpen, onSidebarToggle, selectedGenre, onSelectPlatform, selectedPlatform }: Props) => {
+const Main = ({
+  isSidebarOpen,
+  onSidebarToggle,
+  selectedGenre,
+  onSelectPlatform,
+  onSelectPublisher,
+  selectedPublisher,
+  selectedPlatform,
+}: Props) => {
   return (
     <main className="flex-1 bg-zinc-900 flex flex-col overflow-y-auto">
       <NavBar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} />
@@ -22,8 +33,8 @@ const Main = ({ isSidebarOpen, onSidebarToggle, selectedGenre, onSelectPlatform,
           Arcade<span className="text-rose-400">Xplore</span>
         </h1>
         <MainSearch />
-        <SortControls onSelectPlatform={onSelectPlatform} />
-        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
+        <SortControls onSelectPlatform={onSelectPlatform} onSelectPublisher={onSelectPublisher} />
+        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} selectedPublisher={selectedPublisher} />
       </div>
     </main>
   );

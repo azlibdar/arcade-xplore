@@ -1,16 +1,21 @@
 import { PlatformList } from "../../hooks/usePlatforms";
+import { Publisher } from "../../hooks/usePublishers";
 
 interface SelectInputProps {
-  data: PlatformList[] | undefined;
+  data: PlatformList[] | Publisher[] | undefined;
   loading: boolean;
   error: string | null;
   defaultValue?: string;
+  id: string;
   onChange: (platform: PlatformList | "") => void;
 }
 
-const SelectInput = ({ data, loading, error, onChange, defaultValue = "Select" }: SelectInputProps) => {
+const SelectInput = ({ data, loading, error, onChange, defaultValue = "Select", id }: SelectInputProps) => {
   return (
-    <div className="relative select-none" title={error ? "Something went wrong" : loading ? "Loading" : "Sort by platforms"}>
+    <div className="relative select-none" title={error ? "Something went wrong" : loading ? "Loading" : `Sort by ${id}`}>
+      <label htmlFor={id} className="sr-only">
+        Sort by ${id}
+      </label>
       <select
         onChange={(e) => {
           const platform = data?.find((option) => option.slug === e.target.value);
@@ -20,10 +25,9 @@ const SelectInput = ({ data, loading, error, onChange, defaultValue = "Select" }
             onChange("");
           }
         }}
+        id={id}
         disabled={loading || error !== null}
         className="block px-4 cursor-pointer disabled:pointer-events-none disabled:opacity-50 text-sm py-2.5 pr-9 transition outline-none focus:ring-2 focus:ring-inset focus:ring-rose-400 rounded-lg text-zinc-200 bg-zinc-800 appearance-none"
-        name="genre"
-        id="genre"
       >
         <option value="">{defaultValue}</option>
         {data?.map((option) => (

@@ -4,12 +4,23 @@ import Sidebar from "./components/layouts/Sidebar";
 import useOnMobile from "./hooks/useOnMobile";
 import { Genre } from "./hooks/useGenres";
 import { PlatformList } from "./hooks/usePlatforms";
+import { Publisher } from "./hooks/usePublishers";
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   const [selectedPlatform, setSelectedPlatform] = useState<PlatformList | null>(null);
+  const [selectedPublisher, setSelectedPublisher] = useState<Publisher | null>(null);
   const { isMobile } = useOnMobile();
+
+  const handleSelectPublisher = (publisher: Publisher | "") => {
+    if (publisher === "") {
+      setSelectedPublisher(null);
+      return;
+    }
+
+    setSelectedPublisher(publisher);
+  };
 
   const handleSelectPlatform = (platform: PlatformList | "") => {
     if (platform === "") {
@@ -42,7 +53,9 @@ function App() {
       )}
       <Main
         selectedPlatform={selectedPlatform}
+        selectedPublisher={selectedPublisher}
         onSelectPlatform={handleSelectPlatform}
+        onSelectPublisher={handleSelectPublisher}
         selectedGenre={selectedGenre}
         isSidebarOpen={isSidebarOpen}
         onSidebarToggle={handleSidebar}
