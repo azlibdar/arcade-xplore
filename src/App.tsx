@@ -11,7 +11,12 @@ function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   const [selectedPlatform, setSelectedPlatform] = useState<PlatformList | null>(null);
   const [selectedPublisher, setSelectedPublisher] = useState<Publisher | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string | null>(null);
   const { isMobile } = useOnMobile();
+
+  const handleSearchQuery = (query: string | null) => {
+    setSearchQuery(query);
+  };
 
   const handleSelectPublisher = (publisher: Publisher | "") => {
     if (publisher === "") {
@@ -59,6 +64,8 @@ function App() {
         selectedGenre={selectedGenre}
         isSidebarOpen={isSidebarOpen}
         onSidebarToggle={handleSidebar}
+        onSearchQuery={handleSearchQuery}
+        searchQuery={searchQuery}
       />
     </div>
   );

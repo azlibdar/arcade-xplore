@@ -1,18 +1,19 @@
 import { SearchIcon } from "@primer/octicons-react";
-import { useState } from "react";
 
-const MainSearch = () => {
-  const [query, setQuery] = useState("");
+interface Props {
+  onSearchQuery: (query: string | null) => void;
+}
 
+const MainSearch = ({ onSearchQuery }: Props) => {
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = new FormData(e.target as HTMLFormElement);
     const query = form.get("search") as string;
 
     if (query.length === 0) {
-      return;
+      onSearchQuery(null);
     }
-    setQuery(query);
+    onSearchQuery(query);
   };
 
   return (

@@ -14,6 +14,8 @@ interface Props {
   onSelectPublisher: (publisher: Publisher | "") => void;
   selectedPlatform: PlatformList | null;
   selectedPublisher: Publisher | null;
+  onSearchQuery: (query: string | null) => void;
+  searchQuery: string | null;
 }
 
 const Main = ({
@@ -24,6 +26,8 @@ const Main = ({
   onSelectPublisher,
   selectedPublisher,
   selectedPlatform,
+  onSearchQuery,
+  searchQuery,
 }: Props) => {
   return (
     <main className="flex-1 bg-zinc-900 flex flex-col overflow-y-auto">
@@ -32,9 +36,14 @@ const Main = ({
         <h1 className="text-2xl sm:text-4xl font-semibold text-zinc-200">
           Arcade<span className="text-rose-400">Xplore</span>
         </h1>
-        <MainSearch />
+        <MainSearch onSearchQuery={onSearchQuery} />
         <SortControls onSelectPlatform={onSelectPlatform} onSelectPublisher={onSelectPublisher} />
-        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} selectedPublisher={selectedPublisher} />
+        <GameGrid
+          selectedGenre={selectedGenre}
+          searchQuery={searchQuery}
+          selectedPlatform={selectedPlatform}
+          selectedPublisher={selectedPublisher}
+        />
       </div>
     </main>
   );
