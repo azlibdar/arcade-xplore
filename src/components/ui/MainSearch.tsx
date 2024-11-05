@@ -17,7 +17,7 @@ const MainSearch = ({ onSearchQuery }: Props) => {
   };
 
   return (
-    <form className="w-full max-w-3xl relative" onSubmit={(e) => handleSubmission(e)}>
+    <form className="w-full relative" onSubmit={(e) => handleSubmission(e)}>
       <label htmlFor="search" className="sr-only">
         Search games
       </label>
@@ -25,11 +25,12 @@ const MainSearch = ({ onSearchQuery }: Props) => {
         type="text"
         id="search"
         name="search"
+        enterKeyHint="go"
         placeholder="Press enter to search.."
-        className="w-full py-3 px-3 pl-10 rounded-full text-base transition bg-zinc-800 text-zinc-200 placeholder:text-zinc-400 border-0 outline-none"
+        className="w-full p-3 pl-8 rounded-lg sm:text-sm transition bg-zinc-800 text-zinc-200 placeholder:text-zinc-400 border-0 outline-none"
       />
-      <div className="absolute pointer-events-none inset-0 h-full w-min px-4 flex justify-center items-center text-zinc-400">
-        <SearchIcon size={16} />
+      <div className="absolute pointer-events-none inset-0 h-full w-min px-3 flex justify-center items-center text-zinc-400">
+        <SearchIcon size={15} />
       </div>
     </form>
   );

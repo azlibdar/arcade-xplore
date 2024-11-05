@@ -15,7 +15,7 @@ const SortControls = ({ onSelectPlatform, onSelectPublisher }: Props) => {
   const flattenedPublishers = publishers?.flat();
 
   return (
-    <div className="w-full flex gap-2">
+    <div className="flex gap-2">
       <SelectInput
         loading={loading}
         id="platform"
