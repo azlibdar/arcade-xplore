@@ -1,23 +1,29 @@
 import { Search01Icon } from "hugeicons-react";
+import { useState } from "react";
 
 interface Props {
   onSearchQuery: (query: string | null) => void;
 }
 
 const MainSearch = ({ onSearchQuery }: Props) => {
-  const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = new FormData(e.target as HTMLFormElement);
-    const query = form.get("search") as string;
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-    if (query.length === 0) {
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    if (value === "") {
       onSearchQuery(null);
     }
-    onSearchQuery(query);
+  };
+
+  const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      onSearchQuery(searchQuery);
+    }
   };
 
   return (
-    <form className="w-full relative" onSubmit={(e) => handleSubmission(e)}>
+    <form className="w-full relative" onSubmit={handleSubmission}>
       <label htmlFor="search" className="sr-only">
         Search games
       </label>
@@ -25,6 +31,8 @@ const MainSearch = ({ onSearchQuery }: Props) => {
         type="text"
         id="search"
         name="search"
+        value={searchQuery}
+        onChange={(e) => handleSearchChange(e.target.value)}
         enterKeyHint="go"
         placeholder="Press enter to search.."
         className="w-full p-3 pl-8 rounded-lg sm:text-sm transition bg-zinc-800 text-zinc-200 placeholder:text-zinc-400 border-0 outline-none"
