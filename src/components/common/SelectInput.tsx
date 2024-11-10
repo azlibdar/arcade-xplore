@@ -24,7 +24,7 @@ const SelectInput = ({ data, onChange, defaultValue = "Select", id }: SelectInpu
           }
         }}
         id={id}
-        className="block px-4 cursor-pointer disabled:pointer-events-none disabled:opacity-50 text-sm py-3 pr-9 transition outline-none focus:ring-2 focus:ring-inset focus:ring-rose-400 rounded-lg text-zinc-200 bg-zinc-800 appearance-none"
+        className="w-full sm:w-min truncate block px-4 cursor-pointer disabled:pointer-events-none disabled:opacity-50 text-sm py-3 pr-8 transition outline-none focus:ring-2 focus:ring-inset focus:ring-rose-400 rounded-lg text-zinc-200 bg-zinc-800 appearance-none"
       >
         <option value="">{defaultValue}</option>
         {data?.map((option) => (
