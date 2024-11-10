@@ -8,9 +8,9 @@ interface Props {
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   return (
-    <div className="p-4 flex flex-col gap-4 overflow-y-auto scrollbar-thin">
+    <div className="w-full h-full flex flex-col gap-4">
       <h3 className="text-sm uppercase tracking-wide text-zinc-400">Genres</h3>
-      <div className="w-full grid grid-cols-1">
+      <div className="w-full grid grid-cols-1 pb-8">
         {genresData.map((genre) => (
           <GenreCard selectedGenre={selectedGenre} onSelectGenre={onSelectGenre} key={genre.id} genre={genre} />
         ))}

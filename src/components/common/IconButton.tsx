@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { cn } from "../../lib/utils";
 
 interface Props {
   children: ReactNode;
@@ -12,7 +13,11 @@ const IconButton = ({ children, title, onClick, className }: Props) => {
     <button
       onClick={onClick}
       title={title}
-      className={`p-2 rounded-lg aspect-square flex justify-center items-center transition-all hover:bg-zinc-800 ${className}`}
+      className={cn(
+        "p-1 rounded-lg aspect-square flex justify-center items-center transition-all hover:bg-zinc-700/50",
+        "bg-transparent",
+        className
+      )}
     >
       {children}
     </button>

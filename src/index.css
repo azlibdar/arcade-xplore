@@ -36,3 +36,7 @@ body {
 .scrollbar-thin::-webkit-scrollbar {
   width: 6px;
 }
+
+.container-type {
+  container-type: inline-size;
+}
