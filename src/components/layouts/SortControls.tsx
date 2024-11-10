@@ -10,7 +10,7 @@ interface Props {
 const SortControls = ({ onSelectPlatform, onSelectPublisher }: Props) => {
   return (
     <div className="flex gap-2">
-      <SelectInput id="platform" onChange={onSelectPlatform} data={platformsData} defaultValue="Sort by: Platform" />
+      <SelectInput id="platform" onChange={onSelectPlatform} data={platformsData} defaultValue="Select Platform" />
       <SelectInput id="publisher" onChange={onSelectPublisher} data={publishersData} defaultValue="Sort by: Publisher" />
     </div>
   );

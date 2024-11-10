@@ -3,7 +3,6 @@ import { Platform, Publisher } from "../../constants";
 import MainSearch from "../ui/MainSearch";
 import GameGrid from "./GameGrid";
 import Navbar from "./Navbar";
-import NavBar from "./Navbar";
 import SortControls from "./SortControls";
 
 interface Props {
