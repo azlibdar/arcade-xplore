@@ -8,7 +8,7 @@ interface GameCardProps {
 
 const GameCard = ({ game }: GameCardProps) => {
   return (
-    <div className="bg-zinc-800 rounded-xl p-4 cursor-pointer h-min">
+    <div className="bg-zinc-800 rounded-xl p-4 cursor-pointer">
       <img
         src={game.background_image}
         loading="lazy"
