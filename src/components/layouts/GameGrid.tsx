@@ -1,5 +1,6 @@
 import { GameQuery } from "../../App";
 import useGame from "../../hooks/useGame";
+import Button from "../common/Button";
 import ErrorMsg from "../common/ErrorMsg";
 import GameCard from "../ui/GameCard";
 import GameCardSkeleton from "../ui/GameCardSkeleton";
@@ -9,7 +10,7 @@ interface Props {
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const { data, error, isLoading } = useGame(gameQuery);
+  const { data, error, isLoading, isFetchingNextPage, hasNextPage, fetchNextPage } = useGame(gameQuery);
 
   if (error) return <ErrorMsg errorMsg={error.message} className="bg-zinc-800 py-6 gap-2 text-zinc-200 text-sm" />;
 
@@ -19,10 +20,15 @@ const GameGrid = ({ gameQuery }: Props) => {
         {isLoading ? (
           [...Array(12)].map((_, index) => <GameCardSkeleton key={index} />)
         ) : data ? (
-          data.results.map((game) => <GameCard key={game.id} game={game} />)
+          data.pages.map((page) => page.results.map((game) => <GameCard key={game.id} game={game} />))
         ) : (
           <ErrorMsg errorMsg="No games found!" className="col-span-3 bg-zinc-800 py-6 gap-2 text-zinc-200 text-sm" />
         )}
+      </div>
+      <div className="my-8 flex justify-center items-center">
+        <Button variant="primary" disabled={isFetchingNextPage} onClick={() => fetchNextPage()}>
+          {isFetchingNextPage ? "Loading..." : hasNextPage ? "Load More" : "No More Games"}
+        </Button>
       </div>
     </div>
   );

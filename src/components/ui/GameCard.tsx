@@ -18,7 +18,7 @@ const GameCard = ({ game }: GameCardProps) => {
       <div className="py-4 flex flex-col">
         <h3 className="text-lg font-semibold text-zinc-200">{game.name}</h3>
         <div className="flex justify-between gap-4 pt-3">
-          <PlatformIcons platforms={game.parent_platforms.map((p) => p.platform)} />
+          <PlatformIcons platforms={game.parent_platforms?.map((p) => p.platform)} />
           <CriticScore score={game.metacritic} />
         </div>
       </div>
